@@ -1,9 +1,20 @@
 const express = require('express')
 const fs = require('fs')
 const path = require('path')
+const cors = require('cors');
 const app = express();
+var whitelist = ['https://js-stream.herokuapp.com/','https://herokuapp.com','http://herokuapp.com'];
+var corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) === -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
 
-
+app.use(cors(corsOptions))
 app.get('/js/:id', (req,res) => {
   var files = fs.readdirSync(`./assets/${req.params.id}`);
   var filtered = files.filter(file => file.match(/\.mp4$/));
