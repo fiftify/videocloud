@@ -17,7 +17,7 @@ var corsOptions = {
 app.use(cors(corsOptions))
 app.get('/js/:id', (req,res) => {
   var files = fs.readdirSync(`./assets/${req.params.id}`);
-  var filtered = files.filter(file => file.match(/\.mp4$/));
+  var filtered = files.filter(file => file.match(/\.mp3|.mp4|.mkv$/));
   res.json({files: filtered});
 })
 

@@ -1,6 +1,7 @@
+//const config = require("../config");
 document.addEventListener('DOMContentLoaded', init, false);
 
-var host = "https://learn-shell-lockround.c9users.io";
+var host = "https://torrent-download-lockround.c9users.io";
 
 /** 
 * You can manipulate the video here
@@ -16,7 +17,7 @@ function init() {
   })
   
   var courseSelect = document.createElement('select');
-  courseSelect.innerHTML = "<option>--select--</option><option>js-ess</option><option>js-asyn</option>"
+  courseSelect.innerHTML = "<option>--select--</option><option>movies</option><option>mp3s</option>"
   document.getElementById("videos").appendChild(courseSelect);
   
   
@@ -29,7 +30,7 @@ function init() {
         var files = data.files;
         var options = files.reduce((acc,currfile) => {
           return acc+`<option>${currfile}</option>`
-        },'');
+        },'<option>--select</option>');
         select.innerHTML = options;
         document.getElementById("videos").appendChild(select);
         var s = document.getElementsByTagName('select')[1];
